@@ -9,76 +9,76 @@ from Model.User import users_json_scheme, user_json_scheme
 BASE_URL = "http://localhost:5000/api/contacts"
 
 
-# class TestPositive:
-#     def setup_class(self):
-#         print("Начинаем позитивные тесты")
-#
-#     def teardown_class(self):
-#         print("Заканчиваем позитивные тесты")
-#
-#     def test_all_get_api_contacts(self):
-#         response = requests.get(BASE_URL)
-#         if response.status_code == 200:
-#             answer = response.json()
-#             validate(answer, users_json_scheme)
-#
-#     def test_post_positive_required_fields(self):
-#         body = {
-#             "first_name": "testuser2",
-#             "email": "test_user_2@mail.ru"
-#         }
-#         response = requests.post(BASE_URL, json=body)
-#         if response.status_code == 200:
-#             answer = response.json()
-#             msg = answer["SUCCESS"]
-#             msg_pattern = r"User: User id: <\d+> is created"
-#             assert re.match(msg_pattern, msg)
-#
-#     def test_post_all_fields_positive(self):
-#         body = {
-#             "first_name": "testuser4",
-#             "email": "test_user_4@mail.ru",
-#             "phone": "+79234567890",
-#             "last_name": "test_last_name",
-#             "city": "Yekaterinburg",
-#             "country": "Russia",
-#             "address": "Pushkina 187",
-#         }
-#         response = requests.post(BASE_URL, json=body)
-#         if response.status_code == 200:
-#             answer = response.json()
-#             msg = answer["SUCCESS"]
-#             msg_pattern = r"User: User id: <\d+> is created"
-#             assert re.match(msg_pattern, msg)
-#
-#     def test_get_one_contact_positive(self):
-#         response = requests.get(f"{BASE_URL}/1")
-#         if response.status_code == 200:
-#             answer = response.json()
-#             validate(answer, user_json_scheme)
-#
-#     def test_put_positive(self):
-#         body = {
-#             "first_name": "Ivan",
-#             "email": "ivan@mail.ru",
-#             "city": "Moscow",
-#             "country": "Russia",
-#             "address": "Pushkina 187",
-#         }
-#         response = requests.put(f"{BASE_URL}/1", json=body)
-#         if response.status_code == 200:
-#             answer = response.json()
-#             msg = answer["MESSAGE"]
-#             msg_pattern = r"User with id: \d+ is changed"
-#             assert re.match(msg_pattern, msg)
-#
-#     def test_delete_positive(self):
-#         response = requests.delete(f"{BASE_URL}/3")
-#         if response.status_code == 200:
-#             answer = response.json()
-#             msg = answer["MESSAGE"]
-#             msg_pattern = r"User with id: \d+ is deleted"
-#             assert re.match(msg_pattern, msg)
+class TestPositive:
+    def setup_class(self):
+        print("Начинаем позитивные тесты")
+
+    def teardown_class(self):
+        print("Заканчиваем позитивные тесты")
+
+    def test_all_get_api_contacts(self):
+        response = requests.get(BASE_URL)
+        if response.status_code == 200:
+            answer = response.json()
+            validate(answer, users_json_scheme)
+
+    def test_post_positive_required_fields(self):
+        body = {
+            "first_name": "testuser2",
+            "email": "test_user_2@mail.ru"
+        }
+        response = requests.post(BASE_URL, json=body)
+        if response.status_code == 200:
+            answer = response.json()
+            msg = answer["SUCCESS"]
+            msg_pattern = r"User: User id: <\d+> is created"
+            assert re.match(msg_pattern, msg)
+
+    def test_post_all_fields_positive(self):
+        body = {
+            "first_name": "testuser4",
+            "email": "test_user_4@mail.ru",
+            "phone": "+79234567890",
+            "last_name": "test_last_name",
+            "city": "Yekaterinburg",
+            "country": "Russia",
+            "address": "Pushkina 187",
+        }
+        response = requests.post(BASE_URL, json=body)
+        if response.status_code == 200:
+            answer = response.json()
+            msg = answer["SUCCESS"]
+            msg_pattern = r"User: User id: <\d+> is created"
+            assert re.match(msg_pattern, msg)
+
+    def test_get_one_contact_positive(self):
+        response = requests.get(f"{BASE_URL}/1")
+        if response.status_code == 200:
+            answer = response.json()
+            validate(answer, user_json_scheme)
+
+    def test_put_positive(self):
+        body = {
+            "first_name": "Ivan",
+            "email": "ivan@mail.ru",
+            "city": "Moscow",
+            "country": "Russia",
+            "address": "Pushkina 187",
+        }
+        response = requests.put(f"{BASE_URL}/1", json=body)
+        if response.status_code == 200:
+            answer = response.json()
+            msg = answer["MESSAGE"]
+            msg_pattern = r"User with id: \d+ is changed"
+            assert re.match(msg_pattern, msg)
+
+    def test_delete_positive(self):
+        response = requests.delete(f"{BASE_URL}/3")
+        if response.status_code == 200:
+            answer = response.json()
+            msg = answer["MESSAGE"]
+            msg_pattern = r"User with id: \d+ is deleted"
+            assert re.match(msg_pattern, msg)
 
 
 class TestNegative:
